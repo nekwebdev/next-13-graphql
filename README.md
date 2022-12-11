@@ -1,4 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next.js 13+ base app built for TypeScript and GraphQL
+
+The objectif of this repository is to track my progress with setting up Next.js 13 for a graphql with a solid foundation.
+
+## Initial app creation and setup
+
+I went for the default [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). Only adding the `--experimental-app` flag since we are going for the new Next 13 features.
+
+```bash
+yarn create next-app next-13-graphql --experimental-app
+```
+
+### Git flow
+
+Git flow is just so good, here is a few aliases I use:
+
+```bash
+# git flow aliases
+alias gffs 'git flow feature start'
+alias gfff 'git flow feature finish'
+alias gfrs 'git flow release start'
+alias gfrf 'git flow release finish'
+alias gfhs 'git flow hotfix start'
+alias gfhf 'git flow hotfix finish'
+```
+
+This will give me a good commit history that I can refer back to later when I wonder why or how I did something :)
+Always start a new feature before working on something, heck even this first edit of the `README.md` woudl be done in a new feature.
+As easy as `gffs folder-structure`
+
+### Moving to a src folder
+
+I much rather have my app code in it's own source folder, since it also needed a change in `tsconfig.json` I just copied over a more extensive configuration.
+
+## Original README.md
 
 ## Getting Started
 
