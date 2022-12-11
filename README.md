@@ -134,7 +134,20 @@ yarn add -D -E tailwindcss postcss autoprefixer
 npx tailwindcss init -p
 ```
 
-Copy the correct configuration into `tailwind.config.js` and add the imports in `./src/app/global.css`
+Copy the correct configuration into `tailwind.config.js` and add the imports in `./src/app/global.css`.
+Forgot to add the `Poppins` font at that point, so it will be done in the next feature, `global-query`, if you need to check the commit history
+
+## Strapi config
+
+At this point I would add my strapi template to have a graphql api to work with but the create-strapi app is broken atm.
+
+## Server Component GraphQL query
+
+### Query global metadata for the Head component
+
+We create our first `GraphQL query` and `graphqlClient request` in `./src/lib/getGlobalData.ts` while making sure `yarn codegen` is running so it can do its magic.
+We now make the function `async` in `./src/app/head.tsx` and import our new `getGlobalData` request and bob's your uncle! Types are all handled, beauty!
+A special function to fetch media from the Strapi api is also needed, also a good time to add image domains that should be authorized in `next.config.js`.
 
 ## Original README.md
 
