@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "codegen": "DOTENV_CONFIG_PATH=\"./.env.local\" graphql-codegen --require dotenv/config --watch",
     "check-types": "tsc --pretty --noEmit",
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
@@ -26,6 +27,8 @@
     "typescript": "4.9.4"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "2.16.1",
+    "@graphql-codegen/client-preset": "1.2.3",
     "eslint-config-prettier": "8.5.0",
     "husky": "^8.0.0",
     "lint-staged": "13.1.0",
