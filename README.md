@@ -135,7 +135,7 @@ npx tailwindcss init -p
 ```
 
 Copy the correct configuration into `tailwind.config.js` and add the imports in `./src/app/global.css`.
-Forgot to add the `Poppins` font at that point, so it will be done in the next feature, `global-query`, if you need to check the commit history
+Forgot to add the `Poppins` font at that point, so it will be done in the next feature, `global-query`, if you need to check the commit history.
 
 ## Strapi config
 
@@ -148,6 +148,12 @@ At this point I would add my strapi template to have a graphql api to work with 
 We create our first `GraphQL query` and `graphqlClient request` in `./src/lib/getGlobalData.ts` while making sure `yarn codegen` is running so it can do its magic.
 We now make the function `async` in `./src/app/head.tsx` and import our new `getGlobalData` request and bob's your uncle! Types are all handled, beauty!
 A special function to fetch media from the Strapi api is also needed, also a good time to add image domains that should be authorized in `next.config.js`.
+
+## Navbar with query
+
+### Navbar Components
+
+Let's start by setting up our initial files and modify the `./src/app/layout.tsx` to inclue our new `./src/components/Header.tsx` which then loads the `./src/components/Navbar/Navbar.tsx`, which in turns loads the mobile and desktop navbar components. Check the trick with the `index.ts` in that folder for cleaner imports.
 
 ## Original README.md
 
