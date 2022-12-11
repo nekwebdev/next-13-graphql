@@ -1,0 +1,31 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo '🏗️👷 Styling, testing and building your project before committing'
+
+# Check prettier and linting standards
+yarn lint-staged ||
+(
+  echo '🤢🤮🤢🤮 Even prettier couldnt fix this...';
+  false;
+)
+
+# Chech TypeScript standards
+yarn check-types ||
+(
+  echo '🤡😂❌🤡 Failed Type check...';
+  false;
+)
+
+# Only need to pass the build stage
+echo '🤔🤔🤔🤔 Code looks good. Trying to build now...'
+
+# Build project
+yarn build ||
+(
+  echo '❌👷🔨❌ Better call Bob...';
+  false;
+)
+
+# Commit
+echo '✅✅✅✅ Accepting commit, this one time...'
