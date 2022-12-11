@@ -5,6 +5,7 @@ The objectif of this repository is to track my progress with setting up Next.js 
 ## Initial app creation and setup
 
 I went for the default [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). Only adding the `--experimental-app` flag since we are going for the new Next 13 features.
+Make sure to pick `TypeScript` and `ESlint` options.
 
 ```bash
 yarn create next-app next-13-graphql --experimental-app
@@ -32,6 +33,17 @@ As easy as `gffs folder-structure`
 
 I much rather have my app code in it's own source folder, since it also needed a change in `tsconfig.json` I just copied over a more extensive configuration.
 
+```
+Project
+└───src
+│   └───app
+│   └───components
+│   └───core
+│   └───lib
+```
+
+The way to look at it is `core` is helpers/functions that could go in any project, `lib` are queries and other libs related to the project.
+
 ### Prettier
 
 I like not worrying about code formatting and having something very opinionated such as [Prettier](https://prettier.io/) handle it fits me just fine!
@@ -53,7 +65,7 @@ yarn add -D -E lint-staged
 
 ### lint-staged and husky
 
-Now lets push this whole pretty linting to the next level by creating a git hook to make sure all checks are passed before any commit is accepted!
+Now lets push this whole pretty linting to the next level with [okonet](https://github.com/okonet)/**[lint-staged](https://github.com/okonet/lint-staged)** and [typicode](https://github.com/typicode)/**[husky](https://github.com/typicode/husky)** by creating a git hook to make sure all checks are passed before any commit is accepted, force your linting rules!
 
 ```bash
 npx husky-init
@@ -64,6 +76,54 @@ yarn add -D -E lint-staged
 Check the new `.lintstagedrc` config and `.husky/pre-commit` for a list of all the checks being run.
 
 Dont forget to edit the `.git/config` file for the new path for hooks. Set the `hook` value for `[gitflow "path"]` to `.husky`.
+
+## GraphQL
+
+### graphql-request
+
+[prisma-labs](https://github.com/prisma-labs)/**[graphql-request](https://github.com/prisma-labs/graphql-request)** is a lean GraphQL client based on fetch and is all we need.
+
+```bash
+yarn add -E graphql-request graphql
+```
+
+And we add a `.graphql.yml` to make sure vscode wont miss query tags in `ts/tsx` files.
+
+### .env and .env.local files
+
+This will be our first use for a `.env` file. Make a copy and name it `.env.local` with your correct values. There is a different value for the schema and the endpoint in case you need to use a different source for `graphql-codegen`
+
+```bash
+BASE_API_URL=http://localhost:1337
+GRAPHQL_SCHEMA=http://localhost:1337/graphql
+GRAPHQL_ENDPOINT=http://localhost:1337/graphql
+GRAPHQL_API_KEY=
+```
+
+### graphql client
+
+Our first `core` library, a `graphql-client` we can use to make our queries.
+
+### graphql-codegen
+
+https://the-guild.dev/graphql/codegen[GraphQl Codegen](https://the-guild.dev/graphql/codegen) makes having a fully Typed graphql api a breeze.
+
+```bash
+yarn add -D -E @graphql-codegen/cli @graphql-codegen/client-preset
+```
+
+Once again dropping a `codegen.ts` config that matches this directory structure
+
+```
+Project
+└───src
+│   └───lib
+|   │   └───gql
+```
+
+And a new script `yarn codegen` in `packages.json` to start our watcher in charge of generating graphql queries Types.
+
+Note the use of `process.env.GRAPHQL_SCHEMA` in `codegen.ts` for the schema url.
 
 ## Original README.md
 
