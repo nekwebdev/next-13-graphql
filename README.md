@@ -136,6 +136,16 @@ npx tailwindcss init -p
 
 Copy the correct configuration into `tailwind.config.js` and add the imports in `./src/app/global.css`
 
+## Strapi config
+
+At this point I would add my strapi template to have a graphql api to work with but the create-strapi app is broken atm.
+
+## Server Component GraphQL query
+
+### Query global metadata for the Head component
+
+We create our first `GraphQL query` and `graphqlClient request` in `./src/lib/getGlobalData.ts` while making sure `yarn codegen` is running so it can do its magic.
+
 ## Original README.md
 
 ## Getting Started
