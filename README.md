@@ -135,6 +135,7 @@ npx tailwindcss init -p
 ```
 
 Copy the correct configuration into `tailwind.config.js` and add the imports in `./src/app/global.css`.
+Forgot to add the `Poppins` font at that point, so it will be done in the next feature, `global-query`, if you need to check the commit history
 
 ## Strapi config
 
