@@ -102,11 +102,11 @@ GRAPHQL_API_KEY=
 
 ### graphql client
 
-Our first `core` library, a `graphql-client` we can use to make our queries.
+Our first `core` library, a `graphqlClient` we can use to make our queries.
 
 ### graphql-codegen
 
-https://the-guild.dev/graphql/codegen[GraphQl Codegen](https://the-guild.dev/graphql/codegen) makes having a fully Typed graphql api a breeze.
+[GraphQl Codegen](https://the-guild.dev/graphql/codegen) makes having a fully Typed graphql api a breeze.
 
 ```bash
 yarn add -D -E @graphql-codegen/cli @graphql-codegen/client-preset
@@ -124,6 +124,17 @@ Project
 And a new script `yarn codegen` in `packages.json` to start our watcher in charge of generating graphql queries Types.
 
 Note the use of `process.env.GRAPHQL_SCHEMA` in `codegen.ts` for the schema url.
+
+### Tailwindcss
+
+[Tailwindcss](https://tailwindcss.com/) is by far the new cool kid on the css frameworks block, and I like it :)
+
+```bash
+yarn add -D -E tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+```
+
+Copy the correct configuration into `tailwind.config.js` and add the imports in `./src/app/global.css`
 
 ## Original README.md
 
