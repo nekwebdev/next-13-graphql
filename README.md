@@ -32,6 +32,17 @@ As easy as `gffs folder-structure`
 
 I much rather have my app code in it's own source folder, since it also needed a change in `tsconfig.json` I just copied over a more extensive configuration.
 
+### Prettier
+
+I like not worrying about code formatting and having something very opinionated such as [Prettier](https://prettier.io/) handle it fits me just fine!
+
+```bash
+yarn add -D -E prettier eslint-config-prettier
+```
+
+Copied over defaults I liked in a `.prettierrc.json` and `.prettierignore` that should roughly match `.gitignore`.
+Now we also need to have eslint actually use prettier in it's config. This is when I also copy over an `.eslintrc.json` with prettier configured and rules to prevent components being imported the _wrong_ way. Take a look and it makes sense.
+
 ## Original README.md
 
 ## Getting Started
