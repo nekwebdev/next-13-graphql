@@ -88,6 +88,21 @@ yarn add -E graphql-request graphql
 
 And we add a `.graphql.yml` to make sure vscode wont miss query tags in `ts/tsx` files.
 
+### .env and .env.local files
+
+This will be our first use for a `.env` file. Make a copy and name it `.env.local` with your correct values. There is a different value for the schema and the endpoint in case you need to use a different source for `graphql-codegen`
+
+```bash
+BASE_API_URL=http://localhost:1337
+GRAPHQL_SCHEMA=http://localhost:1337/graphql
+GRAPHQL_ENDPOINT=http://localhost:1337/graphql
+GRAPHQL_API_KEY=
+```
+
+### graphql client
+
+Our first `core` library, a `graphql-client` we can use to make our queries.
+
 ## Original README.md
 
 ## Getting Started
