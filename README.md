@@ -155,6 +155,10 @@ A special function to fetch media from the Strapi api is also needed, also a goo
 
 Let's start by setting up our initial files and modify the `./src/app/layout.tsx` to inclue our new `./src/components/Header.tsx` which then loads the `./src/components/Navbar/Navbar.tsx`, which in turns loads the mobile and desktop navbar components. Check the trick with the `index.ts` in that folder for cleaner imports.
 
+### Query Navbar data
+
+Create a new `./src/lib/getNavigationData.ts` query and graphqlClient request associated to it. We will fetch this data in Navbar to feed it to a context api provider.
+
 ## Original README.md
 
 ## Getting Started
