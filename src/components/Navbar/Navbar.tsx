@@ -5,6 +5,8 @@ import { Suspense } from 'react'
 import getNavigationData from '@lib/getNavigationData'
 // Core utilities
 import getStrapiMedia from '@core/getStrapiMedia'
+// Components
+import { NavDesktop } from '@components/Navbar'
 
 const Navbar = async () => {
   // deduped call from Server Component to the graphql api to get our navbar logo
@@ -37,7 +39,8 @@ const Navbar = async () => {
               }
             />
             {/* Navigation */}
-            {/* This is where we will import our Navbars for desktop and mobile */}
+            {/* @ts-expect-error Server Component */}
+            <NavDesktop />
           </Suspense>
         </div>
       </div>
