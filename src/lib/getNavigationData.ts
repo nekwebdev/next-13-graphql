@@ -49,8 +49,43 @@ const GetNavigationQueryDocument = graphql(`
               sections {
                 ... on SectionRelationResponseCollection {
                   data {
+                    id
                     attributes {
                       label
+                      links {
+                        ... on ComponentMenuLink {
+                          id
+                          label
+                          style
+                          url
+                          image {
+                            ... on UploadFileEntityResponse {
+                              data {
+                                ... on UploadFileEntity {
+                                  id
+                                  attributes {
+                                    name
+                                    alternativeText
+                                    caption
+                                    width
+                                    height
+                                    url
+                                  }
+                                }
+                              }
+                            }
+                          }
+                          page {
+                            ... on PageEntityResponse {
+                              data {
+                                attributes {
+                                  slug
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 }
