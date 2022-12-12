@@ -159,6 +159,16 @@ Let's start by setting up our initial files and modify the `./src/app/layout.tsx
 
 Create a new `./src/lib/getNavigationData.ts` query and graphqlClient request associated to it. We will fetch this data in Navbar to feed it to a context api provider.
 
+### Navigation data fetching
+
+Next.js 13 docs recommend colocating data fetching alongside it's consumer since [`fetch` requests are automatically deduped](https://beta.nextjs.org/docs/data-fetching/fundamentals#automatic-fetch-request-deduping) in Server Components.
+
+So we'll be using the `getNavigationData` in Server Components, namely `Navbar` and `NavDesktop`. Client Components such as `NavMobile`, `NavLink` and `NavDropdown` will get their data serialized via props from `Navbar` or `NavDesktop`.
+
+We also installed [tailwindlabs](https://github.com/tailwindlabs)/**[headlessui](https://github.com/tailwindlabs/headlessui)** along the way, also a reason for having to use Client Components.
+
+Lots going on so comments in the code at each commit step are here to help!
+
 ## Original README.md
 
 ## Getting Started
