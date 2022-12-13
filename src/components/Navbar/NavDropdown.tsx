@@ -1,15 +1,16 @@
 'use client' // using the headlessui library that is client-only
 // React / Next modules
-import Link from 'next/link'
 import { Fragment } from 'react'
 // 3rd party modules
 import { Menu, Transition } from '@headlessui/react'
 // GraphQL types
-import { ComponentMenuDropdown } from '@lib/gql/graphql'
+import { ComponentMenuDropdown, Maybe } from '@lib/gql/graphql'
+// Components
+import { NavLink } from '@components/Navbar'
 
 // set props type
 type Props = {
-  data: ComponentMenuDropdown
+  data: Maybe<ComponentMenuDropdown>
 }
 
 const NavDropdown = (props: Props) => {
@@ -21,7 +22,7 @@ const NavDropdown = (props: Props) => {
             {open ? (
               <div className="rotate-45 z-10 w-6 h-6 top-8 fixed ml-1 mt-1 bg-white" />
             ) : null}
-            <h1>{props.data.label}</h1>
+            <h1>{props?.data?.label}</h1>
           </>
         )}
       </Menu.Button>
@@ -47,19 +48,9 @@ const NavDropdown = (props: Props) => {
                         key={linkData?.id}
                         className="text-md text-gray-600 my-3"
                       >
-                        <Link
-                          href={
-                            // null checking the page slug and the url fall back value
-                            linkData?.page?.data?.attributes?.slug
-                              ? linkData.page.data.attributes.slug
-                              : linkData?.url
-                              ? linkData.url
-                              : ''
-                          }
-                          className="hover:text-secondary"
-                        >
-                          <div>{linkData?.label}</div>
-                        </Link>
+                        <div className="hover:text-secondary">
+                          <NavLink data={linkData} />
+                        </div>
                       </li>
                     ))}
                   </ul>
