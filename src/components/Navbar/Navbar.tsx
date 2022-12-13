@@ -6,7 +6,8 @@ import getNavigationData from '@lib/getNavigationData'
 // Core utilities
 import getStrapiMedia from '@core/getStrapiMedia'
 // Components
-import { NavDesktop } from '@components/Navbar'
+import { NavDesktop, NavMobile } from '@components/Navbar'
+import { Navigation } from '@lib/gql/graphql'
 
 const Navbar = async () => {
   // deduped call from Server Component to the graphql api to get our navbar logo
@@ -42,6 +43,7 @@ const Navbar = async () => {
             {/* Navigation */}
             {/* @ts-expect-error Server Component */}
             <NavDesktop />
+            <NavMobile data={navigationData as Navigation} />
           </Suspense>
         </div>
       </div>
