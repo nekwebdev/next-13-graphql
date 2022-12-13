@@ -1,18 +1,24 @@
-import './globals.css'
+// Styles
+import '@app/globals.css'
+// Components
+import Header from '@components/Header'
 
-export default function RootLayout({
-  children,
-}: {
+type Props = {
   children: React.ReactNode
-}) {
+}
+
+const RootLayout = ({ children }: Props) => {
   return (
     <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
       <head />
-      <body className="font-poppins">{children}</body>
+      <body>
+        <Header />
+        <main>
+          <div>{children}</div>
+        </main>
+      </body>
     </html>
   )
 }
+
+export default RootLayout

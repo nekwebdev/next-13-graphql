@@ -135,7 +135,7 @@ npx tailwindcss init -p
 ```
 
 Copy the correct configuration into `tailwind.config.js` and add the imports in `./src/app/global.css`.
-Forgot to add the `Poppins` font at that point, so it will be done in the next feature, `global-query`, if you need to check the commit history
+Forgot to add the `Poppins` font at that point, so it will be done in the next feature, `global-query`, if you need to check the commit history.
 
 ## Strapi config
 
@@ -148,6 +148,40 @@ At this point I would add my strapi template to have a graphql api to work with 
 We create our first `GraphQL query` and `graphqlClient request` in `./src/lib/getGlobalData.ts` while making sure `yarn codegen` is running so it can do its magic.
 We now make the function `async` in `./src/app/head.tsx` and import our new `getGlobalData` request and bob's your uncle! Types are all handled, beauty!
 A special function to fetch media from the Strapi api is also needed, also a good time to add image domains that should be authorized in `next.config.js`.
+
+## Navbar with query
+
+### Navbar Components
+
+Let's start by setting up our initial files and modify the `./src/app/layout.tsx` to inclue our new `./src/components/Header.tsx` which then loads the `./src/components/Navbar/Navbar.tsx`, which in turns loads the mobile and desktop navbar components. Check the trick with the `index.ts` in that folder for cleaner imports.
+
+### Query Navbar data
+
+Create a new `./src/lib/getNavigationData.ts` query and graphqlClient request associated to it. We will fetch this data in Navbar to feed it to a context api provider.
+
+### Navigation data fetching
+
+Next.js 13 docs recommend colocating data fetching alongside it's consumer since [`fetch` requests are automatically deduped](https://beta.nextjs.org/docs/data-fetching/fundamentals#automatic-fetch-request-deduping) in Server Components.
+
+I want to use [tailwindlabs](https://github.com/tailwindlabs)/**[headlessui](https://github.com/tailwindlabs/headlessui)** so that forces certain components to be Client Components.
+
+Going for this Component heritance tree:
+
+```
+Navbar
+└───NavDesktop
+│   └───NavLink
+│   └───NavDropdown
+└───NavMobile
+```
+
+- `Navbar` is a Server Component using `getNavigationData` to fetch from the GraphQL API and then passes that data to `NavMobile`.
+- `NavDesktop` is a Server Component for now. It starts mapping the navigation entries and renders them with the proper component passing the current iteration data as props.
+- `NavLink` is a Server Component and is in charge of rendering simple link entries from its props.
+- `NavDropdown` is a Client Component, because of HeadlessUI use of states and is in charge of rendering nav menu entries that have sections and require a dropdown panel.
+- `NavMobile` is a Client Component because of the useState and onClick. It renders a complete panel with all the navigation entries, sections and links.
+
+Lots going on so comments in the code at each commit step are here to help! You'll see the back and forth that happened before landing on this setup, and I am sparing you the time spent trying to use Context API when it was not meant for that at all, but hey I learned!
 
 ## Original README.md
 
