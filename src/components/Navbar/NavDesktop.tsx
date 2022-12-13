@@ -7,21 +7,9 @@ import {
   Maybe,
   NavigationLinksDynamicZone,
 } from '@lib/gql/graphql'
+import { isLink, isDropdown } from '@lib/typePredicates'
 // Components
 import { NavDropdown, NavLink } from '@components/Navbar'
-
-// type predicates
-const isLink = (
-  entry: Maybe<NavigationLinksDynamicZone>
-): entry is ComponentMenuLink => {
-  return (entry as ComponentMenuLink).style !== undefined
-}
-
-const isDropdown = (
-  entry: Maybe<NavigationLinksDynamicZone>
-): entry is ComponentMenuDropdown => {
-  return (entry as ComponentMenuDropdown).sections !== undefined
-}
 
 const NavDesktop = async () => {
   const navigationData = await getNavigationData()
