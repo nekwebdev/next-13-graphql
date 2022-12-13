@@ -36,20 +36,23 @@ const NavDropdown = (props: Props) => {
           <Menu.Items className="bg-white border-none p-4 grid grid-cols-3 gap-16 justify-between">
             {props?.data?.sections?.data.map((sectiondData) => (
               <Menu.Item as={Fragment} key={sectiondData.id}>
-                <div className="justify-self-center">
-                  <h1 className="text-lg font-semibold uppercase">
-                    {sectiondData.attributes?.label}
-                  </h1>
-                  <ul>
-                    {sectiondData.attributes?.links?.map((linkData) => (
-                      <li key={linkData?.id} className="text-md text-gray-600 my-3">
-                        <div className="hover:text-secondary">
-                          <NavLink data={linkData} />
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                {({ close }) => (
+                  <div className="justify-self-center">
+                    <h1 className="text-lg font-semibold uppercase">
+                      {sectiondData.attributes?.label}
+                    </h1>
+                    <ul>
+                      {sectiondData.attributes?.links?.map((linkData) => (
+                        <li
+                          key={linkData?.id}
+                          className="text-md text-gray-600 my-3 hover:text-secondary"
+                        >
+                          <NavLink data={linkData} close={close} />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </Menu.Item>
             ))}
           </Menu.Items>
