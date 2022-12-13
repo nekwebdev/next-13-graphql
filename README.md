@@ -163,11 +163,25 @@ Create a new `./src/lib/getNavigationData.ts` query and graphqlClient request as
 
 Next.js 13 docs recommend colocating data fetching alongside it's consumer since [`fetch` requests are automatically deduped](https://beta.nextjs.org/docs/data-fetching/fundamentals#automatic-fetch-request-deduping) in Server Components.
 
-So we'll be using the `getNavigationData` in Server Components, namely `Navbar` and `NavDesktop`. Client Components such as `NavMobile`, `NavLink` and `NavDropdown` will get their data serialized via props from `Navbar` or `NavDesktop`.
+I want to use [tailwindlabs](https://github.com/tailwindlabs)/**[headlessui](https://github.com/tailwindlabs/headlessui)** so that forces certain components to be Client Components.
 
-We also installed [tailwindlabs](https://github.com/tailwindlabs)/**[headlessui](https://github.com/tailwindlabs/headlessui)** along the way, also a reason for having to use Client Components.
+Going for this Component heritance tree:
 
-Lots going on so comments in the code at each commit step are here to help!
+```
+Navbar
+└───NavDesktop
+│   └───NavLink
+│   └───NavDropdown
+└───NavMobile
+```
+
+- `Navbar` is a Server Component using `getNavigationData` to fetch from the GraphQL API and then passes that data to `NavMobile`.
+- `NavDesktop` is a Server Component for now. It starts mapping the navigation entries and renders them with the proper component passing the current iteration data as props.
+- `NavLink` is a Client Component, because of HeadlessUI bieng a client-only module and is in charge of rendering simple link entries.
+- `NavDropdown` is a Client Component, also because of HeadlessUI and is in charge of rendering nav menu entries that have sections and require a dropdown panel.
+- `NavMobile` is a Client Component because of the useState it requires to open and close. It renders a complete panel with all the navigation entries, sections and links.
+
+Lots going on so comments in the code at each commit step are here to help! You'll see the back and forth that happened before landing on this setup, and I am sparing you the time spent trying to use Context API when it was not meant for that at all, but hey I learned!
 
 ## Original README.md
 

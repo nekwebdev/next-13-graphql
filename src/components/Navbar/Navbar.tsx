@@ -12,11 +12,12 @@ const Navbar = async () => {
   // deduped call from Server Component to the graphql api to get our navbar logo
   const navigationData = await getNavigationData()
   return (
-    <nav className="z-50 w-full">
+    <nav className="w-full">
       <div className="bg-white text-black flex items-center font-poppins font-medium justify-around">
-        <div className="flex p-1 w-full h-16 sm:w-auto justify-between">
+        <div className="flex p-1 w-full sm:w-auto justify-between">
           <Suspense fallback={<p>Loading data...</p>}>
             <Image
+              className="pr-4"
               src={
                 navigationData?.logo?.data?.attributes?.url
                   ? getStrapiMedia(navigationData.logo.data.attributes.url)
