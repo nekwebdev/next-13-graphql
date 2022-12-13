@@ -24,6 +24,7 @@ const GetGlobalQueryDocument = graphql(`
             ... on ComponentSharedSeo {
               metaTitle
               metaDescription
+              metaKeywords
               shareImage {
                 ... on UploadFileEntityResponse {
                   data {
