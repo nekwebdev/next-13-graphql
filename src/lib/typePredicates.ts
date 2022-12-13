@@ -7,9 +7,7 @@ import {
 } from '@lib/gql/graphql'
 
 // type predicates
-export const isLink = (
-  entry: Maybe<NavigationLinksDynamicZone>
-): entry is ComponentMenuLink => {
+export const isLink = (entry: Maybe<NavigationLinksDynamicZone>): entry is ComponentMenuLink => {
   return (entry as ComponentMenuLink).style !== undefined
 }
 

@@ -44,10 +44,7 @@ const NavDropdown = (props: Props) => {
                   </h1>
                   <ul>
                     {sectiondData.attributes?.links?.map((linkData) => (
-                      <li
-                        key={linkData?.id}
-                        className="text-md text-gray-600 my-3"
-                      >
+                      <li key={linkData?.id} className="text-md text-gray-600 my-3">
                         <div className="hover:text-secondary">
                           <NavLink data={linkData} />
                         </div>
