@@ -14,7 +14,7 @@ import { NavDropdown, NavLink } from '@components/Navbar'
 const NavDesktop = async () => {
   const navigationData = await getNavigationData()
   return (
-    <div className="sm:flex hidden items-center gap-4">
+    <ul className="sm:flex hidden items-center gap-4">
       {navigationData?.links.map((linkData) =>
         // the navigationData has an array of link elements that can be
         // ComponentMenuDropdown | ComponentMenuLink | Error
@@ -22,12 +22,12 @@ const NavDesktop = async () => {
         // we then serialize as a specific Type for the child component props
         isLink(linkData as Maybe<NavigationLinksDynamicZone>) ? (
           <>
-            <div className="hover:text-secondary">
+            <li className="hover:text-secondary">
               <NavLink
                 key={(linkData as ComponentMenuLink).id}
                 data={linkData as ComponentMenuLink}
               />
-            </div>
+            </li>
           </>
         ) : isDropdown(linkData as Maybe<NavigationLinksDynamicZone>) ? (
           <NavDropdown
@@ -36,7 +36,7 @@ const NavDesktop = async () => {
           />
         ) : null
       )}
-    </div>
+    </ul>
   )
 }
 
