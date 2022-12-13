@@ -13,11 +13,10 @@ const Navbar = async () => {
   // deduped call from Server Component to the graphql api to get our navbar logo
   const navigationData = await getNavigationData()
   return (
-    <nav className="w-full bg-white text-black flex items-center font-poppins font-medium justify-around">
-      <div className="flex p-1 w-full sm:w-auto justify-between">
-        <Suspense fallback={<p>Loading data...</p>}>
+    <Suspense fallback={<p>Loading data...</p>}>
+      <nav className="w-full bg-white text-black flex items-center font-poppins font-medium justify-around">
+        <div className="flex p-1 w-full sm:w-auto justify-between">
           <Image
-            className="pr-4"
             src={
               navigationData?.logo?.data?.attributes?.url
                 ? getStrapiMedia(navigationData.logo.data.attributes.url)
@@ -39,13 +38,13 @@ const Navbar = async () => {
                 : undefined
             }
           />
-          {/* Navigation */}
-          {/* @ts-expect-error Server Component */}
-          <NavDesktop />
-          <NavMobile data={navigationData as Navigation} />
-        </Suspense>
-      </div>
-    </nav>
+        </div>
+        {/* Navigation */}
+        {/* @ts-expect-error Server Component */}
+        <NavDesktop />
+        <NavMobile data={navigationData as Navigation} />
+      </nav>
+    </Suspense>
   )
 }
 

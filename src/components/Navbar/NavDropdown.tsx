@@ -19,14 +19,12 @@ const NavDropdown = (props: Props) => {
       <Menu.Button className="px-3 text-left md:cursor-pointer hover:text-secondary">
         {({ open }) => (
           <>
-            {open ? (
-              <div className="rotate-45 z-10 w-6 h-6 top-8 fixed ml-1 mt-1 bg-white" />
-            ) : null}
+            {open ? <div className="rotate-45 w-6 h-6 top-9 fixed ml-1 mt-1 bg-white" /> : null}
             <h1>{props?.data?.label}</h1>
           </>
         )}
       </Menu.Button>
-      <div className="absolute left-0 right-4 top-14 py-3">
+      <div className="absolute left-0 right-3 top-14 py-3">
         <Transition
           enter="transition ease-in-out duration-1000 transform"
           enterFrom="-translate-x-full"
