@@ -1,4 +1,4 @@
-'use client' // using the headlessui library that is client-only
+'use client' // using the headlessui library that depends on states
 // React / Next modules
 import { Fragment } from 'react'
 // 3rd party modules

@@ -177,9 +177,9 @@ Navbar
 
 - `Navbar` is a Server Component using `getNavigationData` to fetch from the GraphQL API and then passes that data to `NavMobile`.
 - `NavDesktop` is a Server Component for now. It starts mapping the navigation entries and renders them with the proper component passing the current iteration data as props.
-- `NavLink` is a Client Component, because of HeadlessUI bieng a client-only module and is in charge of rendering simple link entries.
-- `NavDropdown` is a Client Component, also because of HeadlessUI and is in charge of rendering nav menu entries that have sections and require a dropdown panel.
-- `NavMobile` is a Client Component because of the useState it requires to open and close. It renders a complete panel with all the navigation entries, sections and links.
+- `NavLink` is a Server Component and is in charge of rendering simple link entries from its props.
+- `NavDropdown` is a Client Component, because of HeadlessUI use of states and is in charge of rendering nav menu entries that have sections and require a dropdown panel.
+- `NavMobile` is a Client Component because of the useState and onClick. It renders a complete panel with all the navigation entries, sections and links.
 
 Lots going on so comments in the code at each commit step are here to help! You'll see the back and forth that happened before landing on this setup, and I am sparing you the time spent trying to use Context API when it was not meant for that at all, but hey I learned!
 

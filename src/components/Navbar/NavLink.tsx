@@ -1,4 +1,3 @@
-'use client' // using the headlessui library that is client-only
 // React / Next modules
 import Link from 'next/link'
 // GraphQL types
