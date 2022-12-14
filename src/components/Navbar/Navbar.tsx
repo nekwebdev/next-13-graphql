@@ -3,11 +3,12 @@ import Image from 'next/image'
 import { Suspense } from 'react'
 // GraphQL queries
 import getNavigationData from '@lib/getNavigationData'
+// GraphQL types
+import { Navigation } from '@lib/gql/graphql'
 // Core utilities
 import getStrapiMedia from '@core/getStrapiMedia'
 // Components
 import { NavDesktop, NavMobile } from '@components/Navbar'
-import { Navigation } from '@lib/gql/graphql'
 
 const Navbar = async () => {
   // deduped call from Server Component to the graphql api to get our navbar logo

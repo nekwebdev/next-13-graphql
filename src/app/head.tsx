@@ -1,23 +1,17 @@
 // GraphQL queries
 import getGlobalData from '@lib/getGlobalData'
-// Core utilities
-import getStrapiMedia from '@core/getStrapiMedia'
+// Components
+import DefaultTags from '@components/DefaultTags'
 
 const Head = async () => {
   const globalData = await getGlobalData()
   return (
     <>
+      {/* @ts-expect-error Server Component */}
+      <DefaultTags />
       <title>{globalData?.siteName}</title>
-      <meta content="width=device-width, initial-scale=1" name="viewport" />
       <meta name="description" content={globalData?.seo.metaDescription} />
-      <link
-        rel="icon"
-        href={
-          globalData?.favicon?.data?.attributes?.url
-            ? getStrapiMedia(globalData.favicon.data.attributes.url)
-            : ''
-        }
-      />
+      <meta name="keywords" content={globalData?.seo.metaKeywords} />
     </>
   )
 }

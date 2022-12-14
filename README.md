@@ -183,6 +183,15 @@ Navbar
 
 Lots going on so comments in the code at each commit step are here to help! You'll see the back and forth that happened before landing on this setup, and I am sparing you the time spent trying to use Context API when it was not meant for that at all, but hey I learned!
 
+## Pages with slug route
+
+To make use of the new router in `app` we will create a `[slug]` folder that will have it's own `head.tsx` and `page.tsx`. We also create a new GraphQL query named `getPageData` that will be used by both new components to get the data they need.
+Since the API returns markdown text we are using both `markdown-to-jsx` and `@tailwindcss/typography` to make it look pretty!
+
+```bash
+yarn add -D -E markdown-to-jsx @tailwindcss/typography
+```
+
 ## Original README.md
 
 ## Getting Started

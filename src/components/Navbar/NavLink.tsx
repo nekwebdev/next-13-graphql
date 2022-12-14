@@ -6,11 +6,13 @@ import { ComponentMenuLink, Maybe } from '@lib/gql/graphql'
 // set props type
 type Props = {
   data: Maybe<ComponentMenuLink>
+  close?: () => void
 }
 
 const NavLink = (props: Props) => {
   return (
     <Link
+      onClick={props.close}
       href={
         // null checking the url and the page slug fall back value
         props?.data?.url
