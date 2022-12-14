@@ -15,7 +15,7 @@ type Props = {
 
 const NavDropdown = (props: Props) => {
   return (
-    <Menu as="li">
+    <Menu>
       <Menu.Button className="px-3 text-left md:cursor-pointer hover:text-secondary">
         {({ open }) => (
           <>
