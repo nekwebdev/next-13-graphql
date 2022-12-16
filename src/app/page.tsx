@@ -4,16 +4,20 @@ import Image from 'next/image'
 import styles from './page.module.css'
 // GraphQL queries
 import getHomeSliderData from '@lib/getHomeSliderData'
+import getHomeParallaxData from '@lib/getHomeParallaxData'
 // GraphQL types
-import { isHomeSlider } from '@lib/typePredicates'
+import { isHomeParallax, isHomeSlider } from '@lib/typePredicates'
 // Components
 import HomeSlider from '@components/HomeSlider'
+import HomeParallax from '@components/HomeParallax'
 
 const Home = async () => {
   const homeSliderData = await getHomeSliderData()
+  const homeParallaxData = await getHomeParallaxData()
   return (
     <>
       {isHomeSlider(homeSliderData) ? <HomeSlider data={homeSliderData} /> : null}
+      {isHomeParallax(homeParallaxData) ? <HomeParallax data={homeParallaxData} /> : null}
       <div className={styles.container}>
         <main className={styles.main}>
           <h1 className={styles.title}>

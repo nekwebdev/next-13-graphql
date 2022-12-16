@@ -3,6 +3,7 @@ import {
   ComponentMenuDropdown,
   ComponentMenuLink,
   ComponentSharedSlide,
+  HomeParallax,
   HomeSlider,
   Maybe,
   Navigation,
@@ -24,3 +25,6 @@ export const isHomeSlider = (entry: any): entry is HomeSlider =>
   (entry as HomeSlider).slides !== undefined
 
 export const isNav = (entry: any): entry is Navigation => (entry as Navigation).logo !== undefined
+
+export const isHomeParallax = (entry: any): entry is HomeParallax =>
+  (entry as HomeParallax).banner !== undefined

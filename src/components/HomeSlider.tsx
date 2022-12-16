@@ -20,7 +20,7 @@ const homeSliderSettings = {
 
 const HomeSlider = (props: Props) => {
   return (
-    <div className="">
+    <div className="h-[50vh]">
       <Fade {...homeSliderSettings}>
         {props?.data?.slides?.map((slide, index) =>
           isSlide(slide) ? (
