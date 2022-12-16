@@ -12,11 +12,7 @@ const SlideCard = (props: Props) => {
       <div
         className="flex bg-cover justify-center pt-[14vh] h-1/2"
         style={{
-          backgroundImage: `url("${
-            props.data.image.data?.attributes?.url
-              ? getStrapiMedia(props.data.image.data.attributes.url)
-              : ''
-          }")`,
+          backgroundImage: `url("${props.data.image.data?.attributes?.url ?? ''}")`,
           backgroundPosition: 'center center',
         }}
       >

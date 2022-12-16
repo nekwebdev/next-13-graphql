@@ -2,6 +2,7 @@
 import {
   ComponentMenuDropdown,
   ComponentMenuLink,
+  ComponentSharedSlide,
   Maybe,
   NavigationLinksDynamicZone,
 } from '@lib/gql/graphql'
@@ -16,3 +17,6 @@ export const isDropdown = (
 ): entry is ComponentMenuDropdown => {
   return (entry as ComponentMenuDropdown).sections !== undefined
 }
+
+export const isSlide = (variableToCheck: any): variableToCheck is ComponentSharedSlide =>
+  (variableToCheck as ComponentSharedSlide).id !== undefined

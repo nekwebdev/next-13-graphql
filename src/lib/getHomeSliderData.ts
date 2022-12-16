@@ -2,6 +2,10 @@
 import { graphql } from '@lib/gql'
 // Core utilities
 import graphqlClient from '@core/graphqlClient'
+// GraphQL types
+import { isSlide } from '@lib/typePredicates'
+// Core utilities
+import getStrapiMedia from '@core/getStrapiMedia'
 
 const GetHomeSliderQueryDocument = graphql(`
   query GetHomeSliderQuery {
@@ -32,6 +36,13 @@ const GetHomeSliderQueryDocument = graphql(`
 
 const getHomeSliderData = async () => {
   const { homeSlider } = await graphqlClient.request(GetHomeSliderQueryDocument)
+  // get all the correct url paths
+  homeSlider?.data?.attributes?.slides?.forEach((slide) => {
+    if (isSlide(slide)) {
+      const fixedUrl = getStrapiMedia(slide.image.data?.attributes?.url ?? '')
+      slide.image.data!.attributes!.url = fixedUrl
+    }
+  })
   return homeSlider?.data?.attributes
 }
 

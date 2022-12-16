@@ -4,6 +4,7 @@ import { Fade } from 'react-slideshow-image'
 import 'react-slideshow-image/dist/styles.css'
 // GraphQL types
 import { ComponentSharedSlide, HomeSlider } from '@lib/gql/graphql'
+import { isSlide } from '@lib/typePredicates'
 // Components
 import SlideCard from './SlideCard'
 
@@ -11,9 +12,6 @@ import SlideCard from './SlideCard'
 type Props = {
   data: HomeSlider
 }
-
-const isSlide = (variableToCheck: any): variableToCheck is ComponentSharedSlide =>
-  (variableToCheck as ComponentSharedSlide).id !== undefined
 
 const homeSliderSettings = {
   arrows: false,
