@@ -40,7 +40,7 @@ const getHomeSliderData = async () => {
   homeSlider?.data?.attributes?.slides?.forEach((slide) => {
     if (isSlide(slide)) {
       const fixedUrl = getStrapiMedia(slide.image.data?.attributes?.url ?? '')
-      slide.image.data!.attributes!.url = fixedUrl
+      slide.image.data?.attributes?.url ? (slide.image.data.attributes.url = fixedUrl) : null
     }
   })
   return homeSlider?.data?.attributes
