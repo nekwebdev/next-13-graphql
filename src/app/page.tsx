@@ -1,14 +1,19 @@
-import HomeSlider from '@components/HomeSlider'
-import getHomeSliderData from '@lib/getHomeSliderData'
+// React / Next modules
 import Image from 'next/image'
+// Styles
 import styles from './page.module.css'
+// GraphQL queries
+import getHomeSliderData from '@lib/getHomeSliderData'
+// GraphQL types
+import { isHomeSlider } from '@lib/typePredicates'
+// Components
+import HomeSlider from '@components/HomeSlider'
 
 const Home = async () => {
   const homeSliderData = await getHomeSliderData()
   return (
-    // Swiper slider
     <>
-      <HomeSlider data={homeSliderData as HomeSlider} />
+      {isHomeSlider(homeSliderData) ? <HomeSlider data={homeSliderData} /> : null}
       <div className={styles.container}>
         <main className={styles.main}>
           <h1 className={styles.title}>

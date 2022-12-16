@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@headlessui/react": "1.7.5",
+    "@n8tb1t/use-scroll-position": "2.0.3",
     "@tailwindcss/typography": "0.5.8",
     "@types/node": "18.11.13",
     "@types/react": "18.0.26",

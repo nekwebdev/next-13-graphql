@@ -9,7 +9,13 @@ module.exports = {
     extend: {
       colors: {
         primary: '#ffffff',
-        secondary: '#00f6ff',
+        secondary: '#62C1C2', // lagon
+        active: '#134395', // bleu espace
+        bleuEspace: '#134395',
+        bleuCiel: '#007BC1',
+        lagon: '#62C1C2',
+        plage: '#EFE6B9',
+        profondeur: '#022859',
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],

@@ -4,7 +4,7 @@ import { useState } from 'react'
 // 3rd party modules
 import { FiMenu, FiXCircle } from 'react-icons/fi'
 // GraphQL types
-import { ComponentMenuDropdown, ComponentMenuLink, Navigation } from '@lib/gql/graphql'
+import { Navigation } from '@lib/gql/graphql'
 // Type predicates
 import { isLink, isDropdown } from '@lib/typePredicates'
 // Components
@@ -20,44 +20,49 @@ const NavMobile = (props: Props) => {
   return (
     <>
       <button
-        className="sm:hidden text-3xl"
+        className="flex z-40 lg:hidden mr-4 sm:mr-10 text-3xl bg-white/90 rounded-lg h-14 w-14 justify-center items-center"
         onClick={() => setMenuToggle((prev: boolean) => !prev)}
       >
         {menuToggle ? <FiXCircle /> : <FiMenu />}
       </button>
       <ul
         className={`
-            z-50 sm:hidden bg-white absolute w-full h-full bottom-0 top-12 px-4 text-center
+            bg-white z-30 lg:hidden absolute w-full h-[90vh] bottom-0 top-[10vh] rounded-lg px-4 text-center overflow-y-auto
             duration-500 ${menuToggle ? 'right-0' : 'right-[-100%]'}
           `}
       >
-        {props.data.links.map((linkData) => (
-          <li key={(linkData as ComponentMenuLink | ComponentMenuDropdown).id}>
+        {props.data.links.map((linkData, index) => (
+          <li key={index}>
             {isLink(linkData) ? (
               <>
-                <div className="md:cursor-pointer text-xl mb-4 font-medium hover:text-secondary">
+                <div
+                  className="lg:cursor-pointer text-xl font-medium py-4"
+                  onClick={() => setMenuToggle((prev: boolean) => !prev)}
+                >
                   <NavLink data={linkData} />
                 </div>
               </>
             ) : isDropdown(linkData) ? (
               <>
-                <div className="text-xl mb-4 font-medium">
+                <div className="text-xl font-medium pb-4">
                   <h1>{linkData.label}</h1>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 my-4 justify-between">
-                  {(linkData as ComponentMenuDropdown).sections?.data.map((sectiondData) => (
-                    <div key={sectiondData.id} className="justify-self-center">
-                      <h1 className="text-lg font-semibold uppercase">
+                <div className="grid grid-cols-2 gap-4 py-4 justify-between">
+                  {linkData.sections?.data.map((sectiondData, index) => (
+                    <div key={index} className="justify-self-center">
+                      <h1 className="text-lg text-active font-semibold uppercase">
                         {sectiondData.attributes?.label}
                       </h1>
                       <ul>
-                        {sectiondData.attributes?.links?.map((linkData) =>
+                        {sectiondData.attributes?.links?.map((linkData, index) =>
                           linkData ? (
-                            <li key={linkData?.id} className="text-md text-gray-600 my-3">
-                              <div className="hover:text-secondary">
-                                <NavLink data={linkData} />
-                              </div>
+                            <li
+                              key={index}
+                              className="text-md text-profondeur my-3"
+                              onClick={() => setMenuToggle((prev: boolean) => !prev)}
+                            >
+                              <NavLink data={linkData} />
                             </li>
                           ) : null
                         )}

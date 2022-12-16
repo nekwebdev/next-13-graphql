@@ -11,11 +11,9 @@ const RootLayout = ({ children }: Props) => {
   return (
     <html lang="en">
       <head />
-      <body>
+      <body className="font-poppins">
         <Header />
-        <main>
-          <div>{children}</div>
-        </main>
+        <main>{children}</main>
       </body>
     </html>
   )
