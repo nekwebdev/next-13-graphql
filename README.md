@@ -192,6 +192,12 @@ Since the API returns markdown text we are using both `markdown-to-jsx` and `@ta
 yarn add -D -E markdown-to-jsx @tailwindcss/typography
 ```
 
+## Home page slider
+
+I decided to use [femioladeji](https://github.com/femioladeji)/**[react-slideshow](https://github.com/femioladeji/react-slideshow)** as it's built with react and would only load the script for the type of transition beign used making it more lightweight than other options.
+Checkout the TailwindCSS tags used to make it fill half the window height and always zoom to fit the width.
+I also created a new `getHomeSliderData` GraphQL query.
+
 ## Original README.md
 
 ## Getting Started

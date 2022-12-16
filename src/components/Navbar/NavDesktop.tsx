@@ -21,19 +21,13 @@ const NavDesktop = async () => {
         // GraphQL codegen has an alias for that Type, Maybe<NavigationLinksDynamicZone>
         // we then serialize as a specific Type for the child component props
         isLink(linkData as Maybe<NavigationLinksDynamicZone>) ? (
-          <>
-            <li className="hover:text-secondary">
-              <NavLink
-                key={(linkData as ComponentMenuLink).id}
-                data={linkData as ComponentMenuLink}
-              />
-            </li>
-          </>
+          <li key={(linkData as ComponentMenuLink).id} className="hover:text-secondary">
+            <NavLink data={linkData as ComponentMenuLink} />
+          </li>
         ) : isDropdown(linkData as Maybe<NavigationLinksDynamicZone>) ? (
-          <NavDropdown
-            key={(linkData as ComponentMenuDropdown).id}
-            data={linkData as ComponentMenuDropdown}
-          />
+          <li key={(linkData as ComponentMenuDropdown).id}>
+            <NavDropdown data={linkData as ComponentMenuDropdown} />
+          </li>
         ) : null
       )}
     </ul>
