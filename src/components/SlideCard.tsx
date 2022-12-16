@@ -20,7 +20,7 @@ const SlideCard = (props: Props) => {
           backgroundPosition: 'center center',
         }}
       >
-        <div className="text-4xl text-shadow-md cursor-default">{props.data.label}</div>
+        <div className="text-4xl px-4 text-shadow-md cursor-default">{props.data.label}</div>
       </div>
     </div>
   )

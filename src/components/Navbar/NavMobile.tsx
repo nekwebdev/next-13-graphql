@@ -20,7 +20,7 @@ const NavMobile = (props: Props) => {
   return (
     <>
       <button
-        className="sm:hidden text-3xl"
+        className="flex lg:hidden mr-4 sm:mr-10 text-3xl bg-white/90 rounded-lg h-14 w-14 justify-center items-center"
         onClick={() => setMenuToggle((prev: boolean) => !prev)}
       >
         {menuToggle ? <FiXCircle /> : <FiMenu />}

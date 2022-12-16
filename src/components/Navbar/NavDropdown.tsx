@@ -16,17 +16,21 @@ type Props = {
 const NavDropdown = (props: Props) => {
   return (
     <Menu>
-      <Menu.Button className="px-3 text-left md:cursor-pointer hover:text-secondary">
+      <Menu.Button className="px-3 text-left md:cursor-pointer">
         {({ open }) => (
           <>
-            {open ? (
-              <div className="z-50 rotate-45 w-6 h-6 top-9 fixed ml-1 mt-1 bg-white" />
-            ) : null}
-            <h1>{props?.data?.label}</h1>
+            {open ? <div className="rotate-45 w-6 h-6 top-16 fixed ml-1 mt-1" /> : null}
+            <h1
+              className={`${
+                open ? 'text-active' : ''
+              } hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-br hover:from-bleuEspace hover:via-bleuCiel hover:to-plage`}
+            >
+              {props?.data?.label}
+            </h1>
           </>
         )}
       </Menu.Button>
-      <div className="absolute z-50 left-0 right-3 top-14 py-3">
+      <div className="absolute left-0 right-6 top-24 py-3">
         <Transition
           enter="transition ease-in-out duration-1000 transform"
           enterFrom="-translate-x-full"
@@ -35,7 +39,7 @@ const NavDropdown = (props: Props) => {
           leaveFrom="translate-x-0"
           leaveTo="-translate-x-full"
         >
-          <Menu.Items className="bg-white border-none p-4 grid grid-cols-3 gap-16 justify-between">
+          <Menu.Items className="bg-white/90 rounded-r-lg -mt-2 p-4 grid grid-cols-3 gap-16 justify-between">
             {props?.data?.sections?.data.map((sectiondData) => (
               <Menu.Item as={Fragment} key={sectiondData.id}>
                 {({ close }) => (
@@ -45,10 +49,7 @@ const NavDropdown = (props: Props) => {
                     </h1>
                     <ul>
                       {sectiondData.attributes?.links?.map((linkData) => (
-                        <li
-                          key={linkData?.id}
-                          className="text-md text-gray-600 my-3 hover:text-secondary"
-                        >
+                        <li key={linkData?.id} className="text-md text-gray-600 my-3">
                           <NavLink data={linkData} close={close} />
                         </li>
                       ))}

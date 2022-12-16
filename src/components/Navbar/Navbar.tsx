@@ -15,8 +15,8 @@ const Navbar = async () => {
   const navigationData = await getNavigationData()
   return (
     <Suspense fallback={<p>Loading data...</p>}>
-      <nav className="w-full bg-white text-black flex items-center font-poppins font-medium justify-around">
-        <div className="flex p-1 w-full sm:w-auto justify-between">
+      <nav className="w-full z-40 fixed text-black flex items-center font-medium justify-between pt-[2vh]">
+        <div className="flex bg-white rounded-lg p-1 h-14 ml-4 sm:ml-10 xl:ml-20 2xl:ml-60">
           <Image
             src={
               navigationData?.logo?.data?.attributes?.url
