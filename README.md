@@ -198,6 +198,11 @@ I decided to use [femioladeji](https://github.com/femioladeji)/**[react-slidesho
 Checkout the TailwindCSS tags used to make it fill half the window height and always zoom to fit the width.
 I also created a new `getHomeSliderData` GraphQL query.
 
+## Call to action
+
+You always need a flashy button people should click. I used [n8tb1t](https://github.com/n8tb1t)/**[use-scroll-position](https://github.com/n8tb1t/use-scroll-position)** to read the scroll positions and limit the re renders to make the button go from the middle of the screen to the nav bar.
+Not much else going on, nice css magic to make it all work and look nice!
+
 ## Original README.md
 
 ## Getting Started
