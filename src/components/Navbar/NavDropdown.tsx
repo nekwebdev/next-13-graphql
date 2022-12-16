@@ -40,16 +40,16 @@ const NavDropdown = (props: Props) => {
           leaveTo="-translate-x-full"
         >
           <Menu.Items className="bg-white/90 rounded-r-lg -mt-2 p-4 grid grid-cols-3 gap-16 justify-between">
-            {props?.data?.sections?.data.map((sectiondData) => (
-              <Menu.Item as={Fragment} key={sectiondData.id}>
+            {props?.data?.sections?.data.map((sectiondData, index) => (
+              <Menu.Item as={Fragment} key={index}>
                 {({ close }) => (
                   <div className="justify-self-center">
                     <h1 className="text-lg text-active font-semibold uppercase">
                       {sectiondData.attributes?.label}
                     </h1>
                     <ul>
-                      {sectiondData.attributes?.links?.map((linkData) => (
-                        <li key={linkData?.id} className="text-md text-profondeur my-3">
+                      {sectiondData.attributes?.links?.map((linkData, index) => (
+                        <li key={index} className="text-md text-profondeur my-3">
                           <NavLink data={linkData} close={close} />
                         </li>
                       ))}
