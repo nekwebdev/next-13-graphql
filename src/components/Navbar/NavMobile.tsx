@@ -27,7 +27,7 @@ const NavMobile = (props: Props) => {
       </button>
       <ul
         className={`
-            sm:hidden bg-white absolute w-full h-full bottom-0 top-12 px-4 text-center
+            z-50 sm:hidden bg-white absolute w-full h-full bottom-0 top-12 px-4 text-center
             duration-500 ${menuToggle ? 'right-0' : 'right-[-100%]'}
           `}
       >
