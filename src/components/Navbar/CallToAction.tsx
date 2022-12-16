@@ -14,7 +14,6 @@ type Props = {
 }
 
 const CallToAction = (props: Props) => {
-  console.log(props.data)
   const [isShowing, setIsShowing] = useState(false)
   useScrollPosition(({ prevPos, currPos }) => {
     if (currPos.y < -50) {
