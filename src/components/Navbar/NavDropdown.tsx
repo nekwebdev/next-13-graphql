@@ -44,12 +44,12 @@ const NavDropdown = (props: Props) => {
               <Menu.Item as={Fragment} key={sectiondData.id}>
                 {({ close }) => (
                   <div className="justify-self-center">
-                    <h1 className="text-lg font-semibold uppercase">
+                    <h1 className="text-lg text-active font-semibold uppercase">
                       {sectiondData.attributes?.label}
                     </h1>
                     <ul>
                       {sectiondData.attributes?.links?.map((linkData) => (
-                        <li key={linkData?.id} className="text-md text-gray-600 my-3">
+                        <li key={linkData?.id} className="text-md text-profondeur my-3">
                           <NavLink data={linkData} close={close} />
                         </li>
                       ))}

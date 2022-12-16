@@ -4,7 +4,7 @@ import { Suspense } from 'react'
 // GraphQL queries
 import getNavigationData from '@lib/getNavigationData'
 // GraphQL types
-import { Navigation } from '@lib/gql/graphql'
+import { isNav } from '@lib/typePredicates'
 // Core utilities
 import getStrapiMedia from '@core/getStrapiMedia'
 // Components
@@ -43,7 +43,7 @@ const Navbar = async () => {
         {/* Navigation */}
         {/* @ts-expect-error Server Component */}
         <NavDesktop />
-        <NavMobile data={navigationData as Navigation} />
+        {isNav(navigationData) ? <NavMobile data={navigationData} /> : null}
       </nav>
     </Suspense>
   )
