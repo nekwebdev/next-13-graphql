@@ -203,6 +203,14 @@ I also created a new `getHomeSliderData` GraphQL query.
 You always need a flashy button people should click. I used [n8tb1t](https://github.com/n8tb1t)/**[use-scroll-position](https://github.com/n8tb1t/use-scroll-position)** to read the scroll positions and limit the re renders to make the button go from the middle of the screen to the nav bar.
 Not much else going on, nice css magic to make it all work and look nice!
 
+## Docker
+
+Docker implementation to run code locally in a set environment.
+
+## Github Actions
+
+Example of a CI/CD you will need to commit your `./src/lib/gql` folder for the build to work, you want your repo private for that.
+
 ## Original README.md
 
 ## Getting Started
