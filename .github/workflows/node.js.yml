@@ -45,6 +45,10 @@ jobs:
           echo GRAPHQL_SCHEMA=${{ secrets.BUILDING_GRAPHQL_SCHEMA }} >> .env
           echo GRAPHQL_ENDPOINT=${{ secrets.BUILDING_GRAPHQL_ENDPOINT }} >> .env
 
+      - name: generate codegen libraries
+       run: |
+          yarn codegen-nowatch
+
       - name: Build App
         run: |
           yarn build

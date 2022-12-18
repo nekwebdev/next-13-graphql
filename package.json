@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "codegen": "DOTENV_CONFIG_PATH=\"./.env.local\" graphql-codegen --require dotenv/config --watch",
+    "codegen-nowatch": "DOTENV_CONFIG_PATH=\"./.env.local\" graphql-codegen --require dotenv/config",
     "check-types": "tsc --pretty --noEmit",
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
