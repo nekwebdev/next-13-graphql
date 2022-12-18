@@ -38,6 +38,13 @@ jobs:
           CI=true yarn test
 
       # build
+      - name: create building env file
+        run: |
+          touch .env.local
+          echo BASE_API_URL=${{ secrets.BUILDING_BASE_API_URL }} >> .env
+          echo GRAPHQL_SCHEMA=${{ secrets.BUILDING_GRAPHQL_SCHEMA }} >> .env
+          echo GRAPHQL_ENDPOINT=${{ secrets.BUILDING_GRAPHQL_ENDPOINT }} >> .env
+
       - name: Build App
         run: |
           yarn build
@@ -46,8 +53,7 @@ jobs:
       - name: create staging env file
         if: contains(github.ref, 'refs/heads/release/')
         run: |
-          touch .env.local
-          echo BASE_API_URL=${{ secrets.STAGING_BASE_API_URL }} >> .env
+          echo BASE_API_URL=${{ secrets.STAGING_BASE_API_URL }} > .env
           echo GRAPHQL_SCHEMA=${{ secrets.STAGING_GRAPHQL_SCHEMA }} >> .env
           echo GRAPHQL_ENDPOINT=${{ secrets.STAGING_GRAPHQL_ENDPOINT }} >> .env
 
