@@ -1,0 +1,6 @@
+version: '3.8'
+services:
+  # node dev server
+  nextjs_node:
+    container_name: nextjs_node_dev
+    command: sh -c "yarn --frozen-lockfile && yarn dev"

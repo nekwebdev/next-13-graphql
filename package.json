@@ -11,7 +11,8 @@
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
     "lint": "next lint",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "echo \"Unit testing is not configured for package \\\"×\\\", skipping.\""
   },
   "dependencies": {
     "@headlessui/react": "1.7.5",

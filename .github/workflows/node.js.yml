@@ -1,0 +1,63 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - 'feature/**'
+      - 'release/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+      # install dependencies
+      - name: Install Yarn
+        run: |
+          yarn --frozen-lockfile
+
+      # run tests
+      - name: Run Tests
+        run: |
+          CI=true yarn test
+
+      # build
+      - name: Build App
+        run: |
+          yarn build
+
+      # deploy staging using ssh to transfer the dist folder
+      - name: create staging env file
+        if: contains(github.ref, 'refs/heads/release/')
+        run: |
+          touch .env.local
+          echo BASE_API_URL=${{ secrets.STAGING_BASE_API_URL }} >> .env
+          echo GRAPHQL_SCHEMA=${{ secrets.STAGING_GRAPHQL_SCHEMA }} >> .env
+          echo GRAPHQL_ENDPOINT=${{ secrets.STAGING_GRAPHQL_ENDPOINT }} >> .env
+
+      - name: Deploy Staging
+        if: contains(github.ref, 'refs/heads/release/')
+        uses: easingthemes/ssh-deploy@main
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.STAGING_SSH_PRIVATE_KEY }}
+          ARGS: '-rltgoDzvO'
+          SOURCE: '.next/'
+          REMOTE_HOST: ${{ secrets.STAGING_HOST }}
+          REMOTE_USER: ${{ secrets.STAGING_USER }}
+          TARGET: ${{ secrets.STAGING_TARGET }}

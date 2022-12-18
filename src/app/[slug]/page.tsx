@@ -13,14 +13,14 @@ type Props = {
 
 const Page = async ({ params }: Props) => {
   // check for redirects before rendering the page for the given slug
-  const redirects = await getRedirectsData()
-  if (redirects) {
-    for (let index = 0; index < redirects.length; index++) {
-      params.slug == redirects[index].attributes?.source
-        ? redirect(redirects[index].attributes?.destination ?? '')
-        : null
-    }
-  }
+  // const redirects = await getRedirectsData()
+  // if (redirects) {
+  //   for (let index = 0; index < redirects.length; index++) {
+  //     params.slug == redirects[index].attributes?.source
+  //       ? redirect(redirects[index].attributes?.destination ?? '')
+  //       : null
+  //   }
+  // }
   // get our page data from the slug
   const pageData = await getPageData(params.slug)
   // use https://github.com/probablyup/markdown-to-jsx &
