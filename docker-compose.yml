@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  # node server
+  nextjs_node:
+    build:
+      context: .
+    user: 'node'
+    working_dir: /home/node/app
+    volumes:
+      - ./:/home/node/app
+    networks:
+      - nextjs-servicenet # use an internal network for the Next.js services
+    ports:
+      - '3000:3000'
+networks:
+  # Internal facing network for Next.js Docker containers
+  nextjs-servicenet:
+    name: nextjs-servicenet

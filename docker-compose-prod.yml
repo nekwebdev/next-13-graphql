@@ -1,0 +1,6 @@
+version: '3.8'
+services:
+  # node prod test server
+  nextjs_node:
+    container_name: nextjs_node_prod
+    command: sh -c "yarn --frozen-lockfile && yarn build && NODE_OPTIONS='--inspect' yarn start"
